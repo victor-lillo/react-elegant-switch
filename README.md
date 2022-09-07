@@ -23,3 +23,4 @@ yarn add react-elegant-switch
 import { ElegantSwitch } from 'react-elegant-switch';
 ```
 
+Documentation in progress 🛠
