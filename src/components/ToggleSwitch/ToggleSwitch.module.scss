@@ -1,0 +1,145 @@
+.switch {
+    --switch-button-space: calc((var(--switch-bar-height) - var(--switch-button-size))/2);
+    display: flex;
+    align-items: center;
+
+    label {
+        display: block;
+        height: var(--switch-bar-height);
+        width: var(--switch-bar-width);
+        border-radius: var(--border-radious);
+        box-shadow: var(--switch-bar-shadow);
+        position: relative;
+
+        // LEVER
+        &:after {
+            content: "";
+            height: var(--switch-button-size);
+            width: var(--switch-button-size);
+            border-radius: var(--border-radious);
+            bottom: var(--switch-button-space);
+            box-shadow: var(--switch-lever-shadow);
+            position: absolute;
+        }
+    }
+
+    input[type="checkbox"] {
+        width: 0;
+        height: 0;
+        visibility: hidden;
+
+        // Common style: regardless enabled or disabled attribute
+        // SWITCH ON
+        &:checked {
+
+            // Bar on enabled/disabled
+            +label {
+                background-color: var(--switch-bar-on-background-color);
+                box-shadow: var(--switch-bar-on-shadow);
+
+                // Lever on enabled/disabled
+                &:after {
+                    transform: translateX(calc(var(--switch-bar-width) - var(--switch-button-space) - var(--switch-button-size)));
+                    background-color: var(--switch-lever-on-background-color);
+                    box-shadow: var(--switch-lever-on-shadow);
+                    transition:
+                        transform .4s linear,
+                        background-color .4s linear,
+                        box-shadow .4s linear;
+                }
+            }
+        }
+
+        // SWITCH OFF
+        &:not(:checked) {
+
+            // Bar off enabled/disabled
+            +label {
+                background-color: var(--switch-bar-off-background-color);
+                box-shadow: var(--switch-bar-off-shadow);
+
+                // Lever off enabled/disabled
+                &:after {
+                    transform: translateX(var(--switch-button-space));
+                    background-color: var(--switch-lever-off-background-color);
+                    box-shadow: var(--switch-lever-off-shadow);
+                    transition:
+                        transform .4s linear,
+                        background-color .4s linear,
+                        box-shadow .4s linear;
+                }
+            }
+        }
+
+        // SWITCH ENABLED
+        &:enabled {
+
+            // Switch enabled hover
+            @media(hover: hover) and (pointer: fine) {
+
+                // Bar enabled hover
+                +label {
+                    &:hover {
+                        cursor: pointer;
+                        box-shadow: var(--switch-bar-hover-shadow);
+
+                        // Lever enabled hover
+                        &:after {
+                            box-shadow: var(--switch-lever-hover-shadow);
+                        }
+                    }
+                }
+            }
+
+            // Switch enabled active
+            &:active {
+
+                // Bar enabled active
+                +label {
+                    box-shadow: var(--switch-bar-active-shadow);
+
+                    // Lever enabled active
+                    &:after {
+                        box-shadow: var(--switch-lever-active-shadow);
+                    }
+                }
+            }
+
+            // Switch enabled focus
+            &:focus {
+
+                // Bar enabled focus
+                +label {
+                    box-shadow: var(--switch-bar-focus-shadow);
+
+                    // Lever enabled focus
+                    &:after {
+                        box-shadow: var(--switch-lever-focus-shadow);
+                    }
+                }
+            }
+        }
+
+        // SWITCH DISABLED
+        &:disabled {
+
+            // Bar disabled
+            +label {
+                opacity: 0.4;
+
+                // Lever disabled
+                &:after {
+                    opacity: 1;
+                }
+            }
+
+            @media(hover: hover) and (pointer: fine) {
+
+                // Bar disabled hover
+                +label:hover {
+                    cursor: default;
+                }
+            }
+        }
+    }
+}
