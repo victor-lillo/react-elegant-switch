@@ -20,6 +20,6 @@ yarn add react-elegant-switch
 [React](https://sass-lang.com/) and [React-dom](https://sass-lang.com/) are peer dependencies. Your project needs to have them installed in order to use this confirm toast.
 
 ```tsx
-import {ToggleSwitch} from 'react-elegant-switch';
+import { ElegantSwitch } from 'react-elegant-switch';
 ```
 

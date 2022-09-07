@@ -1,8 +1,6 @@
 import classnames from 'classnames-creator'
 
-import s from './ToggleSwitch.module.scss'
-// Workaround for Vite build not injecting css/scss modules https://github.com/vitejs/vite/issues/6907 - Not working
-// import './ToggleSwitch.module.scss'
+import s from './ElegantSwitch.module.scss'
 
 import React, { useId } from 'react'
 
@@ -36,7 +34,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 // Component names: bar and lever
-export default function ToggleSwitch({
+export default function ElegantSwitch({
     barWidth = '3rem',
     barHeight = '1rem',
     leverSize = '1.6rem',

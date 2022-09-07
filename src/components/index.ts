@@ -1,1 +1,1 @@
-export { default as ToggleSwitch } from "./ToggleSwitch";
+export { default as ElegantSwitch } from "./ElegantSwitch";
