@@ -18,4 +18,5 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true
   }
+  // "include": ["src/setupTests.ts"]
 }

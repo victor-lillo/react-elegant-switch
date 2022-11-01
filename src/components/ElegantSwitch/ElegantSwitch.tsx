@@ -1,122 +1,108 @@
-import classnames from 'classnames-creator'
-
-import s from './ElegantSwitch.module.scss'
-
 import React, { useId } from 'react'
+import classnames from 'classnames-creator'
+import styles from './ElegantSwitch.module.scss'
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-    barWidth?: string,
-    barHeight?: string,
-    leverSize?: string,
+  barWidth?: string
+  barHeight?: string
+  leverSize?: string
 
-    barOnColor?: string,
-    barOffColor?: string,
-    leverOnColor?: string,
-    leverOffColor?: string,
+  barOnColor?: string
+  barOffColor?: string
+  leverOnColor?: string
+  leverOffColor?: string
 
-    barOnShadow?: string,
-    barOffShadow?: string,
-    leverOnShadow?: string,
-    leverOffShadow?: string,
+  barOnShadow?: string
+  barOffShadow?: string
+  leverOnShadow?: string
+  leverOffShadow?: string
 
-    barHoverShadow?: string,
-    barFocusedShadow?: string,
-    barActiveShadow?: string,
+  barHoverShadow?: string
+  barFocusedShadow?: string
+  barActiveShadow?: string
 
-    leverHoverShadow?: string,
-    leverFocusedShadow?: string,
-    leverActiveShadow?: string,
+  leverHoverShadow?: string
+  leverFocusedShadow?: string
+  leverActiveShadow?: string
 
-    borderRadious?: string,
-    checked: boolean,
-    className?: string,
-    onChange: React.ChangeEventHandler<HTMLInputElement>
+  borderRadius?: string
+  checked: boolean
+  className?: string
+  onChange: React.ChangeEventHandler<HTMLInputElement>
 }
 
 // Component names: bar and lever
 export default function ElegantSwitch({
-    barWidth = '3rem',
-    barHeight = '1rem',
-    leverSize = '1.6rem',
+  barWidth = '3rem',
+  barHeight = '1rem',
+  leverSize = '1.6rem',
 
-    barOnColor = '#ac7dee',
-    leverOnColor = '#730fff',
-    barOffColor = '#808080',
-    leverOffColor = 'white',
+  barOnColor = '#ac7dee',
+  leverOnColor = '#730fff',
+  barOffColor = '#808080',
+  leverOffColor = 'white',
 
-    barOnShadow,
-    leverOnShadow,
-    barOffShadow,
-    leverOffShadow = '0 0 10px 1px #b7b9b5',
+  barOnShadow,
+  leverOnShadow,
+  barOffShadow,
+  leverOffShadow = '0 0 10px 1px #b7b9b5',
 
-    barHoverShadow,
-    barFocusedShadow,
-    barActiveShadow,
+  barHoverShadow,
+  barFocusedShadow,
+  barActiveShadow,
 
-    leverHoverShadow = '0 0 0 10px #9a61e946',
-    leverFocusedShadow,
-    leverActiveShadow = '0 0 0 10px #9a61e98b',
+  leverHoverShadow = '0 0 0 10px #9a61e946',
+  leverFocusedShadow,
+  leverActiveShadow = '0 0 0 10px #9a61e98b',
 
-    borderRadious = '10rem',
-    checked,
-    className,
-    onChange,
-    ...rest
-
+  borderRadius = '10rem',
+  checked,
+  className,
+  onChange,
+  ...rest
 }: Props): JSX.Element {
+  const name = useId()
+  const cssVariables = {
+    '--switch-bar-width': barWidth,
+    '--switch-bar-height': barHeight,
+    '--switch-button-size': leverSize,
 
-    // New native hook for unique ID
-    const name = useId()
-    console.log('styles', s)
+    '--switch-bar-on-background-color': barOnColor,
+    '--switch-bar-off-background-color': barOffColor,
+    '--switch-lever-on-background-color': leverOnColor,
+    '--switch-lever-off-background-color': leverOffColor,
 
-    const cssVariables = {
-        "--switch-bar-width": barWidth,
-        "--switch-bar-height": barHeight,
-        "--switch-button-size": leverSize,
+    '--switch-bar-on-shadow': barOnShadow,
+    '--switch-bar-off-shadow': barOffShadow,
+    '--switch-lever-on-shadow': leverOnShadow,
+    '--switch-lever-off-shadow': leverOffShadow,
 
-        "--switch-bar-on-background-color": barOnColor,
-        "--switch-bar-off-background-color": barOffColor,
-        "--switch-lever-on-background-color": leverOnColor,
-        "--switch-lever-off-background-color": leverOffColor,
+    '--switch-bar-hover-shadow': barHoverShadow,
+    '--switch-bar-focused-shadow': barFocusedShadow,
+    '--switch-bar-active-shadow': barActiveShadow,
 
-        "--switch-bar-on-shadow": barOnShadow,
-        "--switch-bar-off-shadow": barOffShadow,
-        "--switch-lever-on-shadow": leverOnShadow,
-        "--switch-lever-off-shadow": leverOffShadow,
+    '--switch-lever-hover-shadow': leverHoverShadow,
+    '--switch-lever-focused-shadow': leverFocusedShadow,
+    '--switch-lever-active-shadow': leverActiveShadow,
 
-        "--switch-bar-hover-shadow": barHoverShadow,
-        "--switch-bar-focused-shadow": barFocusedShadow,
-        "--switch-bar-active-shadow": barActiveShadow,
+    '--border-radius': borderRadius,
+  }
 
-        "--switch-lever-hover-shadow": leverHoverShadow,
-        "--switch-lever-focused-shadow": leverFocusedShadow,
-        "--switch-lever-active-shadow": leverActiveShadow,
+  const mainClass = classnames(styles.switch, className)
 
-        "--border-radious": borderRadious,
-    }
-
-    const mainClass = classnames(
-        s.switch,
-        className
-    )
-
-    return (
-        <div
-            className={mainClass}
-            style={cssVariables as React.CSSProperties}
-        >
-            <input
-                className={s.switch__input}
-                checked={checked}
-                id={name}
-                name={name}
-                onChange={onChange}
-                type="checkbox"
-                {...rest}
-            />
-            <label
-                className={s.switch__label}
-                htmlFor={name}></label>
-        </div>
-    )
+  return (
+    <div className={mainClass} style={cssVariables as React.CSSProperties}>
+      <input
+        className={styles.switch__input}
+        checked={checked}
+        id={name}
+        name={name}
+        onChange={onChange}
+        role='switch-lever'
+        type='checkbox'
+        {...rest}
+      />
+      <label className={styles.switch__label} htmlFor={name} role='switch-bar'></label>
+    </div>
+  )
 }
