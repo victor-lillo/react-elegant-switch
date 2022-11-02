@@ -3,7 +3,7 @@ import React from 'react'
 import ElegantSwitch from './index.ts'
 
 export default {
-  title: 'Example/ElegantSwitch',
+  title: 'ElegantSwitch',
   component: ElegantSwitch,
   argTypes: {
     backgroundColor: { control: 'color' },
