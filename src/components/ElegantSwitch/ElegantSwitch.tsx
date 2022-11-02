@@ -99,6 +99,7 @@ export default function ElegantSwitch({
         name={name}
         onChange={onChange}
         role='switch-lever'
+        aria-checked={checked}
         type='checkbox'
         {...rest}
       />
