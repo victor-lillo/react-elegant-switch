@@ -10,6 +10,10 @@ export default {
   },
 }
 
-const Template = (args) => <ElegantSwitch {...args} />
+const Template = (args) => (
+  <div>
+    <ElegantSwitch {...args} />
+  </div>
+)
 
 export const Primary = Template.bind({})
